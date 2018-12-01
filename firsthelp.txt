@@ -1,5 +1,0 @@
-help to you...\
-这是需要合并的内容
-这是master上的内容这是firstbranch上的neir 
-version1
-version2
