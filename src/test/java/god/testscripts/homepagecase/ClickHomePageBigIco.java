@@ -161,5 +161,6 @@ public class ClickHomePageBigIco {
         }
         Log.info("点击当日呼入电话大图标成功");
         Log.endTestCase("点击当日呼入电话大图标用例");
+        Log.info("修改后提交到git上去");
     }
 }
