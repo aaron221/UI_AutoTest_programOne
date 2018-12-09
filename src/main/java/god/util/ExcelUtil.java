@@ -1,6 +1,10 @@
 package god.util;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -12,6 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +30,6 @@ public class ExcelUtil {
     //在读写Excel的时候,均需要调用此方法
     public static void setExcelFile(String path,String sheetName){
         FileInputStream excelFile;
-
         try {
             excelFile = new FileInputStream(path);//实例化Excel文件的FileInputStream对象
             excelWBook = new XSSFWorkbook(excelFile);//实例化Excel文件的XSSFWorkbook的对象
@@ -39,13 +43,19 @@ public class ExcelUtil {
     //读取Excel文件指定单元格的函数-此函数只支持拓展名为.xlsx的Excle文件
     public static String getCellData(int rowNum,int colnum) throws Exception{
         //通过函数参数指定单元格的行号和列号，获取指定的单元格对象
-        cell = excelWSheet.getRow(rowNum).getCell(colnum);
+        try {
+            cell = excelWSheet.getRow(rowNum).getCell(colnum);
+        } catch (Exception e) {
+            Log.info("该行没有数据了");
+            return "这行没有数据了";
+        }
         //如果单元格的内容为字符串类型，则使用getStringCellValue()方法获取单元格的内容
         //如果单元格的内容为数字类型，则使用getNumericCellValue()方法获取单元格的内容
         //注意getNumericCell方法返回值为double类型，转换字符串类型必须在cell.getNumericCellValue()前面加""，用于强制转换double类型
         //到String类型。不加""则会抛出double类型无法转换到String类型的异常
         String cellData = cell.getCellType()==XSSFCell.CELL_TYPE_STRING?cell.getStringCellValue()+
                 "":String.valueOf(Math.round(cell.getNumericCellValue()));
+
         return cellData;
     }
 
@@ -120,10 +130,30 @@ public class ExcelUtil {
         return results;
     }
 
-    public static int getLastColumnNum(){
-        //返回数据文件最后一列的列号，如果有12列，则结果返回11
-        return  excelWSheet.getRow(0).getLastCellNum()-1;
+    //public static int getLastColumnNum(){
+    //    //返回数据文件最后一列的列号，如果有12列，则结果返回11
+    //    return  excelWSheet.getRow(0).getLastCellNum()-1;
+    //}
+
+    public String getCellDta(){
+        HSSFWorkbook wb = null;
+        POIFSFileSystem fs = null;
+        try {
+            fs = new POIFSFileSystem(new FileInputStream("e:\\workbook.xls"));
+            wb = new HSSFWorkbook(fs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        HSSFSheet sheet = wb.getSheetAt(0);
+        HSSFRow row = sheet.getRow(0);
+        HSSFCell cell = row.getCell(0);
+        String msg = cell.getStringCellValue();
+        System.out.println(msg);
+
+        return msg;
     }
+
 }
 
 

@@ -3,8 +3,7 @@
 <suite name="firstsuite" parallel="classes" thread-count="2">
     <test name="firsttest">
         <classes >
-            <class name="god.testscripts.homepagecase.ClickHomePageBigIco"/>
-            <class name="god.testscripts.homepagecase.LookContactPlan"/>
+            <class name="god.testscripts.permitregistercase.RegisterCase"/>
         </classes>
     </test>
 </suite>

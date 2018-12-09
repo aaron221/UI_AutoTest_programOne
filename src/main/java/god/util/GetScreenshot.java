@@ -12,12 +12,12 @@ import java.io.IOException;
  * Created by thomas on 2018/9/27.
  */
 public class GetScreenshot {
-    public GetScreenshot(WebDriver driver,String photoName){
+    public GetScreenshot(String photoName,WebDriver driver){
         File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(srcFile, new File(Constant.SCR_SHOT_PATH+photoName+SystemTime.getCurTime()+".png"));
+            FileUtils.copyFile(srcFile, new File(Constant.SCR_SHOT_PATH+photoName+".png"));
         } catch (Exception e) {
-           Log.error("截图失败");
+            Log.error("截图失败");
         }
     }
 }
