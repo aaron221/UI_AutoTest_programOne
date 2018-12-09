@@ -100,6 +100,7 @@ public class RegisterCase {
         DragScrollBar.dragToEleBot(driver,driver.findElement(By.xpath("//dd[@id='td_1']/input")));
         driver.findElement(By.xpath("//dd[@id='td_1']/input")).sendKeys(imgfile);
         driver.findElement(By.id("regBtn")).click();
+        //hello world
 
     }
 
