@@ -29,7 +29,7 @@ public class IdentifiVerifiCode {
             e.printStackTrace();
         }
         String imagecode = getVerifiCode(codepath);
-        while(imagecode.length!=4){
+        while(imagecode.length()!=4){
               imagecode = getVerifiCode(codepath);
         }
             

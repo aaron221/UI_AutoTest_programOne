@@ -18,7 +18,7 @@ public class RegisterCase {
 
     @BeforeMethod
     public void beforeMethod(){
-        ExcelUtil.setExcelFile("D:\\JAVA自动化学习\\UI自动化\\UI_AutoTest\\resource\\companyList.xlsx","Sheet1");
+        ExcelUtil.setExcelFile(Constant.TESTCASE_DATA,"Sheet1");
         DOMConfigurator.configure("target\\classes\\log4j.xml");//加载lo4gj.xml文件，以便生成日志文件
         driver = SetBrowserProperty.openChromeBrowser();//创建个默认最大化的谷歌浏览器
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -99,8 +99,8 @@ public class RegisterCase {
 
         DragScrollBar.dragToEleBot(driver,driver.findElement(By.xpath("//dd[@id='td_1']/input")));
         driver.findElement(By.xpath("//dd[@id='td_1']/input")).sendKeys(imgfile);
-        driver.findElement(By.id("regBtn")).click();
-        //hello world
+        //driver.findElement(By.id("regBtn")).click();
+       
 
     }
 
