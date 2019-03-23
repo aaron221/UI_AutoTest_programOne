@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 public class DriverWait {
     public static WebElement findElement(WebDriver driver, final WebElement element) {
@@ -30,7 +29,6 @@ public class DriverWait {
                 String simpleContent = driver.getPageSource();
                 simpleContent = simpleContent.replaceAll("[\\/|\n|\t|<html.*>|<script.*>|<div.*>|<a.*>|<body.*>|<p.*>|<input.*>|<!--.*-->]", "");
                 if (simpleContent.contains(containsKeys)) {
-                    Log.info("找到了关键词" + containsKeys);
                     return true;
                 } else {
                     return false;

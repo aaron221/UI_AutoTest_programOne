@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="maven-site-plugin">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$USER_HOME$/.m2/repository/org/apache/maven/plugins/maven-site-plugin" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

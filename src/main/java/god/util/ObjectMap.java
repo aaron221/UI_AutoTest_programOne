@@ -1,6 +1,5 @@
 package god.util;
 
-import com.sun.javafx.binding.StringConstant;
 import org.openqa.selenium.By;
 
 import java.io.FileInputStream;
@@ -55,8 +54,6 @@ public class ObjectMap {
             return By.partialLinkText(locatorValue);
         else if(locatorType.toLowerCase().equals("cssselector")||locatorType.toLowerCase().equals("css"))
             return By.cssSelector(locatorValue);
-        else
-            Log.warning("输入的locator type 未在程序中被定义: "+locatorType);
         return null;
     }
 }

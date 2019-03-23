@@ -1,15 +1,12 @@
 package god.testscripts.permitregistercase;
 
 import god.util.*;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -19,8 +16,7 @@ public class RegisterCase {
     @BeforeMethod
     public void beforeMethod(){
         ExcelUtil.setExcelFile(Constant.TESTCASE_DATA,"Sheet1");
-        DOMConfigurator.configure("target\\classes\\log4j.xml");//加载lo4gj.xml文件，以便生成日志文件
-        driver = SetBrowserProperty.openChromeBrowser();//创建个默认最大化的谷歌浏览器
+        driver = SetBrowserProperty.openFoxBrowser();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 

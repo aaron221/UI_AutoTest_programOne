@@ -1,9 +1,10 @@
 package god.util;
 import net.sourceforge.tess4j.Tesseract;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class IdentifiVerifiCode {
 
@@ -29,12 +30,17 @@ public class IdentifiVerifiCode {
             e.printStackTrace();
         }
         String imagecode = getVerifiCode(codepath);
-        while(imagecode.length()!=4){
+        int times=0;
+        while(imagecode.length()!=4&&times<4){
               imagecode = getVerifiCode(codepath);
+              times++;
+        }
+
+        if(times!=0){
+            Log.error("验证码识别有误，请确确认src/test/screenshot的code图片不为空，假如为空，请联系代码提供者进行处理");
+            Assert.fail();
         }
             
         return imagecode;
-        
-        
     }
 }

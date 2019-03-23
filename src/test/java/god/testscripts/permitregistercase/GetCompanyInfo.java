@@ -3,24 +3,18 @@ package god.testscripts.permitregistercase;
 import god.util.DragScrollBar;
 import god.util.DriverWait;
 import god.util.SetBrowserProperty;
-import org.apache.xmlbeans.impl.xb.xsdschema.LocalSimpleType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Handler;
 
 public class GetCompanyInfo {
 
     public static List<String> getCompanyInfo(String companyName)throws Exception{
         List<String> list = new ArrayList<String>();
-        WebDriver driver = SetBrowserProperty.openChromeBrowser();//创建个默认最大化的谷歌浏览器
+        WebDriver driver = SetBrowserProperty.openFoxBrowser();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get("https://www.tianyancha.com");
         DriverWait.findElement(driver,By.id("home-main-search")).sendKeys(companyName);
@@ -117,10 +111,10 @@ public class GetCompanyInfo {
         return list;
     }
 
-    public static void main(String[] args) throws Exception {
-        List<String> list = getCompanyInfo("菏泽润华汽车服务有限公司");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-    }
+    //public static void main(String[] args) throws Exception {
+    //    List<String> list = getCompanyInfo("菏泽润华汽车服务有限公司");
+    //    for (int i = 0; i < list.size(); i++) {
+    //        System.out.println(list.get(i));
+    //    }
+    //}
 }
