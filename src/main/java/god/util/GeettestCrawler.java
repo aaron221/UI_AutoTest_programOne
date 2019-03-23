@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,6 +28,8 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//此类copy别人的，还未研究如何实现才的，是否能够成功进行拖动识别不保证。
+
 public class GeettestCrawler {
     private static String basePath = "src/main/resources/";
     private static String FULL_IMAGE_NAME = "full-image";
@@ -36,15 +37,8 @@ public class GeettestCrawler {
     private static int[][] moveArray = new int[52][2];
     private static boolean moveArrayInit = false;
     private static String INDEX_URL = "https://passport.feng.com/?r=user/register";
-    private static WebDriver driver;
+    private static WebDriver driver = SetBrowserProperty.openFoxBrowser();
 
-    static {
-        System.setProperty("webdriver.chrome.driver", "D:/dev/selenium/chromedriver_V2.30/chromedriver_win32/chromedriver.exe");
-        if (!System.getProperty("os.name").toLowerCase().contains("windows")){
-            System.setProperty("webdriver.chrome.driver", "/Users/wangyang/workspace/selenium/chromedriver_V2.30/chromedriver");
-        }
-        driver = new ChromeDriver();
-    }
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 10; i++){
